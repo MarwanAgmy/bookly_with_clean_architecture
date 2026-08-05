@@ -5,6 +5,7 @@ import 'package:bookly_app/Features/home/domain/use_cases/fetch_newest_books_use
 import 'package:bookly_app/Features/home/presentaion/manager/featured_books_cubit/featured_books_cubit.dart';
 import 'package:bookly_app/Features/home/presentaion/manager/newest_books_cubit/newest_books_cubit.dart';
 import 'package:bookly_app/core/utils/functions/setup_service_locator.dart';
+import 'package:bookly_app/core/utils/simple_bloc_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,6 +22,7 @@ void main() async {
   setupServiceLocator();
   await Hive.openBox(kFeaturedBox);
   await Hive.openBox(kNewestBox);
+  Bloc.observer = SimpleBlocObserver();
   runApp(const BooklyApp());
 }
 
