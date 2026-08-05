@@ -29,6 +29,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
           'volumes?q=general&key=AIzaSyD1Uoj4a_MoFw8aPQT6njvq5PTzAKGmSrk&filter=free-ebooks&sorting=newest',
     );
     List<BookEntity> books = getBooksList(data);
+    saveBooksData(books, kNewestBox);
     return books;
   }
 
@@ -37,7 +38,7 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     for (var bookMap in data['items']) {
       books.add(BookModel.fromJson(bookMap));
     }
-    saveBooksData(books, kNewestBox);
+
     return books;
   }
 }
