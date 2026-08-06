@@ -4,6 +4,8 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 
 abstract class HomeRepo {
-  Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks();
+  Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks({
+    int pageNumbers = 0,
+  });
   Future<Either<Failure, List<BookEntity>>> fetchNewestBooks();
 }
