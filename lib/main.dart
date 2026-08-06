@@ -20,15 +20,14 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   setupServiceLocator();
-  await Hive.openBox(kFeaturedBox);
-  await Hive.openBox(kNewestBox);
+  await Hive.openBox<BookEntity>(kFeaturedBox);
+  await Hive.openBox<BookEntity>(kNewestBox);
   Bloc.observer = SimpleBlocObserver();
   runApp(const BooklyApp());
 }
 
 class BooklyApp extends StatelessWidget {
   const BooklyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -39,7 +38,7 @@ class BooklyApp extends StatelessWidget {
               fetchFeaturedBooksUseCase: FetchFeaturedBooksUseCase(
                 homeRepo: getIt.get<HomeRepoImpl>(),
               ),
-            );
+            )..fetchFeaturedBooks();
           },
         ),
         BlocProvider(
