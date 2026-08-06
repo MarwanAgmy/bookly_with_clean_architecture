@@ -4,7 +4,7 @@ import '../../../../../core/utils/styles.dart';
 import 'best_seller_list_view.dart';
 import 'custom_app_bar.dart';
 import 'featured_books_list_view.dart';
-import 'featured_books_list_view_bloc_bulider.dart';
+import 'featured_books_list_view_bloc_consumer.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -23,7 +23,7 @@ class HomeViewBody extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 15),
-                child: FeaturedBooksListViewBlocBulider(),
+                child: FeaturedBooksListViewBlocConsumer(),
               ),
               SizedBox(height: 50),
               Padding(
