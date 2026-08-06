@@ -3,6 +3,7 @@ import 'package:bookly_app/Features/home/presentaion/manager/featured_books_cubi
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/utils/functions/build_error_snack_bar.dart';
 import 'featured_books_list_view.dart';
 
 class FeaturedBooksListViewBlocConsumer extends StatefulWidget {
@@ -23,13 +24,19 @@ class _FeaturedBooksListViewBlocConsumerState
         if (state is FeaturedBooksSuccess) {
           books.addAll(state.booksList);
         }
+        if (state is FeaturedBooksPaginationFailure) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(buildErrorSnackBar(state.errorMessage));
+        }
       },
       builder: (context, state) {
         if (state is FeaturedBooksSuccess ||
-            state is FeaturedBooksPaginationLoading) {
+            state is FeaturedBooksPaginationLoading ||
+            state is FeaturedBooksPaginationFailure) {
           return FeaturedBooksListView(books: books);
         } else if (state is FeaturedBooksFailure) {
-          return Text(state.message);
+          return Text(state.errorMessage);
         } else {
           return Center(child: CircularProgressIndicator());
         }
