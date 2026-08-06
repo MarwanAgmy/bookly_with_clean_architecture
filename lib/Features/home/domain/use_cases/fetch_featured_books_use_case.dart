@@ -14,6 +14,6 @@ class FetchFeaturedBooksUseCase
 
   @override
   Future<Either<Failure, List<BookEntity>>> call(pageNumber) async {
-    return await homeRepo.fetchFeaturedBooks(pageNumbers: pageNumber);
+    return await homeRepo.fetchFeaturedBooks(pageNumber: pageNumber);
   }
 }
