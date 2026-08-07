@@ -8,9 +8,9 @@ final class NewestBooksInitial extends NewestBooksState {}
 final class NewestBooksLoading extends NewestBooksState {}
 
 final class NewestBooksFailure extends NewestBooksState {
-  final String message;
+  final String errMessage;
 
-  NewestBooksFailure({required this.message});
+  NewestBooksFailure({required this.errMessage});
 }
 
 final class NewestBooksSuccess extends NewestBooksState {
