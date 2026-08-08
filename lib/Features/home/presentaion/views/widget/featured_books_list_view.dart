@@ -62,7 +62,9 @@ class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
             padding: const EdgeInsets.only(right: 14),
             child: GestureDetector(
               onTap: () {
-                GoRouter.of(context).push(AppRouter.kBookDetailsView);
+                GoRouter.of(
+                  context,
+                ).push(AppRouter.kBookDetailsView, extra: widget.books[index]);
               },
               child: CustomBookImageItem(
                 imgage: widget.books[index].image ?? '',
