@@ -26,8 +26,8 @@ class HomeLocalDataSourceImpl extends HomeLocalDataSource {
   // }
 
   @override
-  List<BookEntity> fetchNewestBooks() {
+  List<BookEntity> fetchNewestBooks({int pageNumber = 0}) {
     var box = Hive.box<BookEntity>(kNewestBox);
-    return box.values.toList();
+    return box.values.skip(pageNumber * pageSize).take(pageSize).toList();
   }
 }

@@ -12,10 +12,10 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
 
   HomeRemoteDataSourceImpl({required this.apiService});
   @override
-  Future<List<BookEntity>> fetchFeaturedBooks({int pageNumbers = 0}) async {
+  Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber = 0}) async {
     var data = await apiService.get(
       endPoint:
-          'volumes?q=programming&key=AIzaSyD1Uoj4a_MoFw8aPQT6njvq5PTzAKGmSrk&filter=free-ebooks&startIndex=${pageNumbers * 10}',
+          'volumes?q=programming&key=AIzaSyD1Uoj4a_MoFw8aPQT6njvq5PTzAKGmSrk&filter=free-ebooks&startIndex=${pageNumber * 10}',
     );
     List<BookEntity> books = getBooksList(data);
     saveBooksData(books, kFeaturedBox);
@@ -23,10 +23,10 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   }
 
   @override
-  Future<List<BookEntity>> fetchNewestBooks() async {
+  Future<List<BookEntity>> fetchNewestBooks({int pageNumber = 0}) async {
     var data = await apiService.get(
       endPoint:
-          'volumes?q=general&key=AIzaSyD1Uoj4a_MoFw8aPQT6njvq5PTzAKGmSrk&filter=free-ebooks&sorting=newest',
+          'volumes?q=general&key=AIzaSyD1Uoj4a_MoFw8aPQT6njvq5PTzAKGmSrk&filter=free-ebooks&sorting=newest&startIndex=${pageNumber * 10}',
     );
     List<BookEntity> books = getBooksList(data);
     saveBooksData(books, kNewestBox);

@@ -1,3 +1,4 @@
+import 'package:bookly_app/Features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/widget/custom_fading_widget.dart';
@@ -10,7 +11,7 @@ class FeaturedBooksListViewLoadingIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomFadingWidget(
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * .3,
+        height: MediaQuery.of(context).size.height * .27,
         child: ListView.builder(
           itemCount: 15,
           scrollDirection: Axis.horizontal,
