@@ -1,6 +1,8 @@
 import 'package:bookly_app/Features/home/domain/entities/book_entity.dart';
 import 'package:bookly_app/Features/search/data/data_sources/remote_data_source/search_remote_data_source.dart';
+import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/api_service.dart';
+import 'package:bookly_app/core/utils/functions/save_books_data.dart';
 
 import '../../../../../core/utils/functions/get_books_list.dart';
 
@@ -14,6 +16,7 @@ class SearchRemoteDataSourceImpl extends SearchRemoteDataSource {
   }) async {
     var data = await apiService.get(endPoint: 'volumes?q=$bookName');
     List<BookEntity> books = getBooksList(data);
+    saveBooksData(books, kSearchBox);
     return books;
   }
 }

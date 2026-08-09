@@ -6,3 +6,4 @@ const kGTSectraFine = 'GT Sectra Fine';
 const kPaddingHeight = 15.0;
 const kFeaturedBox = 'featured_box';
 const kNewestBox = 'newest_box';
+const kSearchBox = 'search_box';
