@@ -5,7 +5,7 @@ sealed class SearchBooksState {}
 
 final class SearchBooksInitial extends SearchBooksState {}
 
-class SearchLoading extends SearchBooksState {}
+class SearchBooksLoading extends SearchBooksState {}
 
 class SearchBooksSuccess extends SearchBooksState {
   final List<BookEntity> books;
