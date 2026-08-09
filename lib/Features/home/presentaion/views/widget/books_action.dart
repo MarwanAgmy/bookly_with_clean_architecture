@@ -1,9 +1,11 @@
+import 'package:bookly_app/Features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
+import '../../../../../core/utils/functions/launch_custom_url.dart';
 import '../../../../../core/widget/custom_button.dart';
 
 class BooksAction extends StatelessWidget {
-  const BooksAction({super.key});
-
+  const BooksAction({super.key, required this.bookEntity});
+  final BookEntity bookEntity;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -12,7 +14,7 @@ class BooksAction extends StatelessWidget {
         children: [
           Expanded(
             child: CustomButton(
-              text: '0€',
+              text: 'Free',
               textColor: Colors.black,
               backgroundColor: Colors.white,
               borderRadius: BorderRadius.only(
@@ -23,8 +25,12 @@ class BooksAction extends StatelessWidget {
           ),
           Expanded(
             child: CustomButton(
+              onPressed: () {
+                print('PREVIEW LINK: ${bookEntity.previewLink}');
+                launchCustomUrl(context, bookEntity.previewLink);
+              },
               fontSize: 16,
-              text: 'Free preview',
+              text: 'preview',
               textColor: Colors.white,
               backgroundColor: Color(0xffEF8262),
               borderRadius: BorderRadius.only(
