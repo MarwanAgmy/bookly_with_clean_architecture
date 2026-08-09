@@ -5,6 +5,7 @@ import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/api_service.dart';
 import 'package:hive/hive.dart';
 
+import '../../../../../core/utils/functions/get_books_list.dart';
 import '../../../../../core/utils/functions/save_books_data.dart';
 
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
@@ -30,15 +31,6 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
     );
     List<BookEntity> books = getBooksList(data);
     saveBooksData(books, kNewestBox);
-    return books;
-  }
-
-  List<BookEntity> getBooksList(Map<String, dynamic> data) {
-    List<BookEntity> books = [];
-    for (var bookMap in data['items']) {
-      books.add(BookModel.fromJson(bookMap));
-    }
-
     return books;
   }
 }
