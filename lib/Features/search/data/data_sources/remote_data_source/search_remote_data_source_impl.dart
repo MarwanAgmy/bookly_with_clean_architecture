@@ -14,7 +14,10 @@ class SearchRemoteDataSourceImpl extends SearchRemoteDataSource {
   Future<List<BookEntity>> searchRemoteDataSource({
     required String bookName,
   }) async {
-    var data = await apiService.get(endPoint: 'volumes?q=$bookName');
+    var data = await apiService.get(
+      endPoint:
+          'volumes?q=$bookName&key=AIzaSyD1Uoj4a_MoFw8aPQT6njvq5PTzAKGmSrk&filter=free-ebooks',
+    );
     List<BookEntity> books = getBooksList(data);
     saveBooksData(books, kSearchBox);
     return books;

@@ -2,17 +2,17 @@ import 'package:bookly_app/Features/home/presentaion/manager/newest_books_cubit/
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../domain/entities/book_entity.dart';
-import 'best_seller_list_view_item.dart';
+import 'Book_list_view_item.dart';
 
-class BestSellerListView extends StatefulWidget {
-  const BestSellerListView({super.key, required this.books});
+class NewestListView extends StatefulWidget {
+  const NewestListView({super.key, required this.books});
   final List<BookEntity> books;
 
   @override
-  State<BestSellerListView> createState() => _BestSellerListViewState();
+  State<NewestListView> createState() => _NewestListViewState();
 }
 
-class _BestSellerListViewState extends State<BestSellerListView> {
+class _NewestListViewState extends State<NewestListView> {
   late final ScrollController _scrollController;
 
   bool isLoading = false;

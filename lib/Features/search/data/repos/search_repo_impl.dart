@@ -18,17 +18,22 @@ class SearchRepoImpl extends SearchRepo {
   Future<Either<Failure, List<BookEntity>>> searchBooks({
     required String bookName,
   }) async {
+    if (bookName.trim().isEmpty) {
+      return right([]);
+    }
     try {
       List<BookEntity> books = await searchRemoteDataSource
           .searchRemoteDataSource(bookName: bookName);
       return Right(books);
     } catch (e) {
+      print("❌ Search API Error: $e");
       List<BookEntity> localBooks = searchLocalDataSource.searchLocalDataSource(
         bookName: bookName,
       );
       if (localBooks.isNotEmpty) {
         return Right(localBooks);
       }
+
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }

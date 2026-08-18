@@ -1,7 +1,7 @@
 import 'package:bookly_app/Features/home/domain/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../home/presentaion/views/widget/best_seller_list_view_item.dart';
+import '../../../../home/presentaion/views/widget/Book_list_view_item.dart';
 
 class SearchResaultListView extends StatelessWidget {
   const SearchResaultListView({super.key, required this.books});

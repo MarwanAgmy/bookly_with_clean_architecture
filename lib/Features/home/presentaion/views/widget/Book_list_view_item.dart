@@ -20,7 +20,7 @@ class BookListViewItem extends StatelessWidget {
         ).push(AppRouter.kBookDetailsView, extra: bookEntity);
       },
       child: SizedBox(
-        height: 125,
+        height: 130,
         child: Row(
           children: [
             AspectRatio(

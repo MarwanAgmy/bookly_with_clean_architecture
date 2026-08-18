@@ -5,7 +5,7 @@ class Debounce {
   final Duration delay;
   Timer? _timer;
 
-  Debounce({this.delay = const Duration(milliseconds: 400)});
+  Debounce({this.delay = const Duration(milliseconds: 800)});
 
   void run(VoidCallback action) {
     _timer?.cancel();

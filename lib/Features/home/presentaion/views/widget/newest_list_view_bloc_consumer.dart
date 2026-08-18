@@ -4,19 +4,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/functions/build_error_snack_bar.dart';
 import '../../../domain/entities/book_entity.dart';
-import 'best_seller_list_view.dart';
+import 'newest_and_search_list_view_loading_skeleton.dart';
+import 'newest_list_view.dart';
 import 'featured_books_list_view_loading_indicator .dart';
 
-class BestSellerListViewBlocBuilder extends StatefulWidget {
-  const BestSellerListViewBlocBuilder({super.key});
+class NewestListViewBlocConsumer extends StatefulWidget {
+  const NewestListViewBlocConsumer({super.key});
 
   @override
-  State<BestSellerListViewBlocBuilder> createState() =>
-      _BestSellerListViewBlocBuilderState();
+  State<NewestListViewBlocConsumer> createState() =>
+      _NewestListViewBlocConsumerState();
 }
 
-class _BestSellerListViewBlocBuilderState
-    extends State<BestSellerListViewBlocBuilder> {
+class _NewestListViewBlocConsumerState
+    extends State<NewestListViewBlocConsumer> {
   List<BookEntity> books = [];
   @override
   Widget build(BuildContext context) {
@@ -35,11 +36,11 @@ class _BestSellerListViewBlocBuilderState
         if (state is NewestBooksSuccess ||
             state is NewestBooksPaginationFailure ||
             state is NewestBooksPaginationLoading) {
-          return BestSellerListView(books: books);
+          return NewestListView(books: books);
         } else if (state is NewestBooksFailure) {
           return Text(state.errMessage);
         } else {
-          return Center(child: CircularProgressIndicator());
+          return const NewestAndSearchListViewLoadingSkeleton();
         }
       },
     );
